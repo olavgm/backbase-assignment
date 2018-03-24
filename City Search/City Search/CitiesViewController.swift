@@ -14,7 +14,8 @@ class CitiesViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        print(CitiesController.shared.items.count)
     }
 
 }
-
