@@ -35,13 +35,13 @@ class CitiesViewController: UIViewController {
 extension CitiesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CitiesController.shared.filteredItems.count
+        return CitiesController.shared.resultsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
 
-        cell.textLabel?.text = CitiesController.shared.filteredItems[indexPath.row].nameAndCountry
+        cell.textLabel?.text = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row].nameAndCountry
 
         return cell
     }
