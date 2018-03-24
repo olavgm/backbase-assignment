@@ -24,7 +24,7 @@ class MapViewController: UIViewController {
         
         guard let city = city else { return }
 
-        mapView.region = MKCoordinateRegion(center: city.coordinate, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        mapView.region = MKCoordinateRegion(center: city.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     }
     
 }
