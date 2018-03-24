@@ -14,4 +14,9 @@ struct City: Decodable {
     let name: String
     let coord: Coordinates
 
+    var nameAndCountry: String {
+        get {
+            return "\(name), \(country)"
+        }
+    }
 }

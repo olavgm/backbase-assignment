@@ -17,6 +17,7 @@
 		E5AF7CEA2066748900DC3BE6 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AF7CE92066748900DC3BE6 /* City.swift */; };
 		E5AF7CEC2066753500DC3BE6 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AF7CEB2066753500DC3BE6 /* Coordinates.swift */; };
 		E5AF7CEE206675AB00DC3BE6 /* CitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AF7CED206675AB00DC3BE6 /* CitiesController.swift */; };
+		E5AF7CF020667E4A00DC3BE6 /* cities1000.json in Resources */ = {isa = PBXBuildFile; fileRef = E5AF7CEF20667E4A00DC3BE6 /* cities1000.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E5AF7CE92066748900DC3BE6 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		E5AF7CEB2066753500DC3BE6 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		E5AF7CED206675AB00DC3BE6 /* CitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesController.swift; sourceTree = "<group>"; };
+		E5AF7CEF20667E4A00DC3BE6 /* cities1000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities1000.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				E5AF7CCB2066700B00DC3BE6 /* Main.storyboard */,
 				E5AF7CCE2066700B00DC3BE6 /* Assets.xcassets */,
 				E5AF7CE72066706400DC3BE6 /* cities.json */,
+				E5AF7CEF20667E4A00DC3BE6 /* cities1000.json */,
 				E5AF7CD02066700B00DC3BE6 /* LaunchScreen.storyboard */,
 				E5AF7CD32066700B00DC3BE6 /* Info.plist */,
 			);
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5AF7CE82066706400DC3BE6 /* cities.json in Resources */,
+				E5AF7CF020667E4A00DC3BE6 /* cities1000.json in Resources */,
 				E5AF7CD22066700B00DC3BE6 /* LaunchScreen.storyboard in Resources */,
 				E5AF7CCF2066700B00DC3BE6 /* Assets.xcassets in Resources */,
 				E5AF7CCD2066700B00DC3BE6 /* Main.storyboard in Resources */,

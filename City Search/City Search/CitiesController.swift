@@ -21,16 +21,22 @@ class CitiesController: NSObject {
     }
     
     func loadData() {
-        guard let path = Bundle.main.path(forResource: "cities", ofType: "json") else { return }
+        guard let path = Bundle.main.path(forResource: "cities1000", ofType: "json") else { return }
 
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             items = try JSONDecoder().decode([City].self, from: data)
-            print("Items count: \(items.count)")
+            sortItems()
         }
         catch {
+            debugPrint("Could not load JSON file.")
         }
+    }
 
+    func sortItems() {
+        items = items.sorted {
+            $0.name < $1.name
+        }
     }
     
 }
