@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 struct City: Decodable {
 
@@ -19,4 +20,11 @@ struct City: Decodable {
             return "\(name), \(country)"
         }
     }
+    
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2DMake(coord.lat, coord.lon)
+        }
+    }
+
 }

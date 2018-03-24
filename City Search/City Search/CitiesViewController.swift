@@ -29,6 +29,15 @@ class CitiesViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapSegue" {
+            guard let city = sender as? City else { return }
+            guard let destinationViewController = segue.destination as? MapViewController else { return }
+            
+            destinationViewController.city = city
+        }
+    }
     
 }
 
@@ -41,11 +50,24 @@ extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
 
-        cell.textLabel?.text = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row].nameAndCountry
+        let city = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row]
+        cell.textLabel?.text = city.nameAndCountry
 
         return cell
     }
 
+}
+
+extension CitiesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let city = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row]
+
+        performSegue(withIdentifier: "MapSegue", sender: city)
+    }
+    
 }
 
 extension CitiesViewController: UISearchResultsUpdating {
