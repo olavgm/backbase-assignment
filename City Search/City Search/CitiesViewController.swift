@@ -17,8 +17,6 @@ class CitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(CitiesController.shared.items.count)
-
         configureView()
     }
 
@@ -37,14 +35,14 @@ class CitiesViewController: UIViewController {
 extension CitiesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CitiesController.shared.items.count
+        return CitiesController.shared.filteredItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
 
-        cell.textLabel?.text = CitiesController.shared.items[indexPath.row].nameAndCountry
-        
+        cell.textLabel?.text = CitiesController.shared.filteredItems[indexPath.row].nameAndCountry
+
         return cell
     }
 
@@ -54,6 +52,10 @@ extension CitiesViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         print(searchController.searchBar.text!)
+
+        CitiesController.shared.filter(search: searchController.searchBar.text!)
+
+        tableView.reloadData()
     }
 
 }
