@@ -17,6 +17,10 @@ class CitiesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
         configureView()
     }
 
@@ -29,7 +33,9 @@ class CitiesViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
- 
+
+    // MARK: - Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MapSegue" {
             guard let city = sender as? City else { return }
@@ -39,7 +45,24 @@ class CitiesViewController: UIViewController {
         }
     }
     
+    // MARK: - Keyboard hide/show methods
+    
+    @objc func keyboardWillShow(_ notification: Foundation.Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let edgeInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            tableView.contentInset = edgeInsets
+            tableView.scrollIndicatorInsets = edgeInsets
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Foundation.Notification) {
+        tableView.contentInset = .zero
+        tableView.scrollIndicatorInsets = .zero
+    }
+
 }
+
+// MARK: - UITableViewDataSource
 
 extension CitiesViewController: UITableViewDataSource {
     
@@ -58,6 +81,8 @@ extension CitiesViewController: UITableViewDataSource {
 
 }
 
+// MARK: - UITableViewDelegate
+
 extension CitiesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,6 +94,8 @@ extension CitiesViewController: UITableViewDelegate {
     }
     
 }
+
+// MARK: - UISearchResultsUpdating
 
 extension CitiesViewController: UISearchResultsUpdating {
 
