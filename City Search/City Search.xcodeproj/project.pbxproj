@@ -68,6 +68,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E50F0DE72066FED2006A8B01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5AF7CE92066748900DC3BE6 /* City.swift */,
+				E5AF7CEB2066753500DC3BE6 /* Coordinates.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E50F0DE82066FEE3006A8B01 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5AF7CC92066700B00DC3BE6 /* CitiesViewController.swift */,
+				E5AF7CF12066F04100DC3BE6 /* MapViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E50F0DE92066FEF0006A8B01 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5AF7CED206675AB00DC3BE6 /* CitiesController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E50F0DEA2066FEFC006A8B01 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E5AF7CD02066700B00DC3BE6 /* LaunchScreen.storyboard */,
+				E5AF7CCB2066700B00DC3BE6 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E50F0DEB2066FF57006A8B01 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E5AF7CE72066706400DC3BE6 /* cities.json */,
+				E5AF7CEF20667E4A00DC3BE6 /* cities1000.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E5AF7CBB2066700B00DC3BE6 = {
 			isa = PBXGroup;
 			children = (
@@ -90,16 +134,12 @@
 			isa = PBXGroup;
 			children = (
 				E5AF7CC72066700B00DC3BE6 /* AppDelegate.swift */,
-				E5AF7CC92066700B00DC3BE6 /* CitiesViewController.swift */,
-				E5AF7CF12066F04100DC3BE6 /* MapViewController.swift */,
-				E5AF7CED206675AB00DC3BE6 /* CitiesController.swift */,
-				E5AF7CE92066748900DC3BE6 /* City.swift */,
-				E5AF7CEB2066753500DC3BE6 /* Coordinates.swift */,
-				E5AF7CCB2066700B00DC3BE6 /* Main.storyboard */,
+				E50F0DEA2066FEFC006A8B01 /* Storyboards */,
+				E50F0DE82066FEE3006A8B01 /* View Controllers */,
+				E50F0DE92066FEF0006A8B01 /* Controllers */,
+				E50F0DE72066FED2006A8B01 /* Models */,
+				E50F0DEB2066FF57006A8B01 /* Data */,
 				E5AF7CCE2066700B00DC3BE6 /* Assets.xcassets */,
-				E5AF7CE72066706400DC3BE6 /* cities.json */,
-				E5AF7CEF20667E4A00DC3BE6 /* cities1000.json */,
-				E5AF7CD02066700B00DC3BE6 /* LaunchScreen.storyboard */,
 				E5AF7CD32066700B00DC3BE6 /* Info.plist */,
 			);
 			path = "City Search";
