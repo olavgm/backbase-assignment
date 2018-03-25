@@ -76,7 +76,7 @@ extension CitiesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath)
 
-        let city = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row]
+        let city = CitiesController.shared.itemWithOffset(offset: indexPath.row)
         cell.textLabel?.text = city.nameAndCountry
         cell.detailTextLabel?.text = city.coord.description
         
@@ -92,7 +92,7 @@ extension CitiesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let city = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row]
+        let city = CitiesController.shared.itemWithOffset(offset: indexPath.row)
 
         performSegue(withIdentifier: "MapSegue", sender: city)
     }

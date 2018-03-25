@@ -28,6 +28,11 @@ class CitiesController: NSObject {
         }
     }
     
+    // Helper for cellForRow
+    func itemWithOffset(offset: Int) -> City {
+        return items[resultsIndex.first + offset]
+    }
+    
     override init() {
         super.init()
         
