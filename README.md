@@ -2,7 +2,7 @@
 
 ## Project
 
-The project is an iOS app using Xcode 9.2 and Swift 4. Please note the [Binary Search](#Binary-Search) section since it's the key part of the project.
+The project is an iOS app using Xcode 9.2 and Swift 4. Please note the [Binary Search](#binary-search) section since it's the key part of the project.
 
 ## View Controllers
 
