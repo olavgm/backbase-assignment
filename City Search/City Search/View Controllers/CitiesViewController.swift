@@ -104,8 +104,6 @@ extension CitiesViewController: UITableViewDelegate {
 extension CitiesViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text!)
-
         CitiesController.shared.filter(search: searchController.searchBar.text!)
 
         tableView.reloadData()

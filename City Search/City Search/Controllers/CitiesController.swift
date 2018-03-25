@@ -80,7 +80,7 @@ class CitiesController: NSObject {
             findRange(search: search)
         }
 
-        print("filter time: \(Date().timeIntervalSince(startDate))")
+        print("time: \(Date().timeIntervalSince(startDate)) - filter: \(search)")
     }
 
     private func findRange(search: String) {
