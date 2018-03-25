@@ -14,6 +14,8 @@ class CitiesController: NSObject {
 
     // Array containing all elements
     var items = [City]()
+    
+    // Array containing all elements, reversed (for fast searching purposes)
     private var itemsReversed = [City]()
 
     // Indexes for first and last item to show on list, filtered or not
@@ -47,6 +49,7 @@ class CitiesController: NSObject {
         }
     }
     
+    // Sets the value for all searchValue in the cities
     private func parseSearchValues() {
         for index in 0..<items.count {
             items[index].searchValue = items[index].nameAndCountry.lowercased()
