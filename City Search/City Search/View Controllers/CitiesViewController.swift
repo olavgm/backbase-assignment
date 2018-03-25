@@ -26,11 +26,16 @@ class CitiesViewController: UIViewController {
 
     func configureView() {
         definesPresentationContext = true
+        automaticallyAdjustsScrollViewInsets = false
 
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.hidesSearchBarWhenScrolling = false
+            navigationItem.searchController = searchController
+        }
+        else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
 
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
