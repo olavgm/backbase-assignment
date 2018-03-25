@@ -38,6 +38,7 @@ class CitiesController: NSObject {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             items = try JSONDecoder().decode([City].self, from: data)
+            parseSearchValues()
             sortItems()
             resultsIndex = (first: 0, last: items.count - 1)
         }
@@ -45,10 +46,16 @@ class CitiesController: NSObject {
             print("Could not load JSON file.")
         }
     }
+    
+    private func parseSearchValues() {
+        for index in 0..<items.count {
+            items[index].searchValue = items[index].nameAndCountry.lowercased()
+        }
+    }
 
     private func sortItems() {
         items = items.sorted {
-            $0.name.lowercased() < $1.name.lowercased()
+            $0.searchValue < $1.searchValue
         }
         
         itemsReversed = items.reversed()
@@ -69,18 +76,57 @@ class CitiesController: NSObject {
     }
 
     private func findRange(search: String) {
-        guard let indexFirst = items.index(where: { $0.name.starts(with: search) }) else {
-            resultsIndex = (first: 0, last: -1)
-            return
+        let indexFirst = findFirstIndex(search: search)
+        let indexLast = findLastIndex(search: search)
+
+        resultsIndex = (first: indexFirst, last: indexLast)
+    }
+    
+    private func findFirstIndex(search: String) -> Int {
+        var startCursor = 0
+        var endCursor = items.count - 1
+        var currentCursor = (startCursor + endCursor) / 2
+
+        let search = search.lowercased()
+
+        while startCursor != currentCursor {
+            if search <= items[currentCursor].searchValue {
+                endCursor = currentCursor
+            }
+            else {
+                startCursor = currentCursor
+            }
+
+            currentCursor = (startCursor + endCursor) / 2
         }
 
-        guard let indexLast = itemsReversed.index(where: { $0.name.starts(with: search) }) else {
-            return
+        return endCursor
+    }
+
+    private func findLastIndex(search: String) -> Int {
+        var startCursor = 0
+        var endCursor = items.count - 1
+        var currentCursor = (startCursor + endCursor) / 2
+
+        let search = search.lowercased()
+
+        while startCursor != currentCursor {
+            if itemsReversed[currentCursor].searchValue.starts(with: search) {
+                endCursor = currentCursor
+            }
+            else {
+                if search > itemsReversed[currentCursor].searchValue {
+                    endCursor = currentCursor
+                }
+                else {
+                    startCursor = currentCursor
+                }
+            }
+            
+            currentCursor = (startCursor + endCursor) / 2
         }
-
-        print("first: \(indexFirst), last: \(items.count - indexLast)")
-
-        resultsIndex = (first: indexFirst, last: items.count - indexLast)
+        
+        return items.count - endCursor
     }
 
 }

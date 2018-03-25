@@ -11,10 +11,15 @@ import MapKit
 
 struct City: Decodable {
 
+    private enum CodingKeys: String, CodingKey { case country, name, coord }
+
     let country: String
     let name: String
     let coord: Coordinates
 
+    // Lowercased nameAndCountry to use for sorting and searching
+    var searchValue = ""
+    
     var nameAndCountry: String {
         get {
             return "\(name), \(country)"
