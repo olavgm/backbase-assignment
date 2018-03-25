@@ -78,7 +78,8 @@ extension CitiesViewController: UITableViewDataSource {
 
         let city = CitiesController.shared.items[CitiesController.shared.resultsIndex.first + indexPath.row]
         cell.textLabel?.text = city.nameAndCountry
-
+        cell.detailTextLabel?.text = city.coord.description
+        
         return cell
     }
 
