@@ -32,7 +32,7 @@ It uses a _shared_ instance since there is need for initialization.
 
 The initial idea was to return an array of results to _CitiesViewController_, but due to the performance optimizations required for 200,000+ items, all the cities are stored in the _items_ array, and the results to show are in the range stored in _resultsIndex_.
 
-The default implementation of just filtering the _items_ array was really slow, around 0.4 seconds per search. I modified the code to keep all the cities in the _items_ array and using _resultsIndex_ to keep the indexes of the first and last elements valid for the search. There was some improvement, but it was still around 0.25 seconds per search using the ```Array.index```.
+The default implementation of just filtering the _items_ array was really slow, around 0.4 seconds per search. To improve the performance, I modified the code to keep all the cities in the _items_ array and using _resultsIndex_ to keep the indexes of the first and last elements valid for the search. There was some improvement, but it was still around 0.25 seconds per search using the ```Array.index``` method.
 
 ### Binary Search
 
